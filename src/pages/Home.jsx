@@ -1,58 +1,54 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 
+const FeatureCard = ({ title, sub, color, desc }) => (
+  <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-50 flex flex-col gap-4">
+    <div className="text-sm font-bold text-gray-800">
+      <p>{title}</p>
+      <p className="mt-4 text-xs text-gray-500 leading-relaxed font-normal">{sub}</p>
+    </div>
+    <div className="mt-auto flex items-center gap-2">
+      <div className={`w-8 h-8 rounded-full ${color} opacity-20`} />
+      <span className="text-xs font-bold">{desc}</span>
+    </div>
+  </div>
+);
+
 export default function Home() {
-  const stats = [
-    { label: 'Curriculum', value: '교육 과정' },
-    { label: 'Graduation Requirements', value: '졸업 요건' },
-    { label: 'Faculty', value: '교수진' },
-  ];
-
   return (
-    <div className="min-h-screen bg-[#000510] text-white font-sans selection:bg-blue-500/30">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden py-24 px-6">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-250 h-150 bg-blue-900/20 blur-[120px] rounded-full" />
-        
-        <div className="max-w-6xl mx-auto relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <h2 className="text-blue-400 font-bold tracking-widest mb-4 uppercase text-sm">Yonsei University</h2>
-            <h1 className="text-4xl md:text-7xl font-extrabold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-blue-500">
-              응용정보공학전공
-            </h1>
-            <p className="text-gray-400 text-xs md:text-xl max-w-2xl mx-auto leading-relaxed">
-              기술을 넘어 가치를 창출합니다. <br />
-              Home 페이지에 오신 것을 환영합니다.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+    <div className="max-w-6xl mx-auto px-6 py-16">
+      <p className="text-gray-400 text-sm mb-10">커리어챗은 다음과 같은 기능을 제공합니다.</p>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+        <FeatureCard title="단점과 해결책을 찾으세요." sub="지피지기 백전백승. 솔루션을 제공해드립니다." color="bg-orange-500" desc="단점을 알려드립니다" />
+        <FeatureCard title="개선점을 찾고 더 발전하세요." sub="현재에 안주하지 마세요. 개선점을 추천해드립니다." color="bg-blue-500" desc="개선점을 추천해드립니다" />
+        <FeatureCard title="장점과 그것을 활용할 방법입니다." sub="이미 뛰어난 부분에 매몰되지 마세요. 충분한 자질에 대해 진단합니다." color="bg-green-500" desc="장점을 알려드립니다" />
+      </div>
 
-      {/* Content Cards */}
-      <section className="py-20 px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8">
-          {stats.map((item, idx) => (
-            <motion.div
-              key={idx}
-              whileHover={{ y: -10 }}
-              className="p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-blue-500/50 transition-all"
-            >
-              <div className="text-blue-500 font-mono mb-2">0{idx + 1}.</div>
-              <div className="text-2xl font-bold mb-2">{item.value}</div>
-              <div className="text-gray-500 text-sm uppercase tracking-wider">{item.label}</div>
-            </motion.div>
-          ))}
+      <div className="flex flex-col md:flex-row gap-12 items-center">
+        <div className="flex-1">
+          <h1 className="text-5xl font-black leading-tight mb-8">
+            포트폴리오, 이력서를 <br />직접 준비했다고 해서 <br />
+            그게 당신의 전부가 <br /> 아닙니다.
+          </h1>
+          <div className="space-y-2 text-gray-500 mb-10">
+            <p>잊고 있었던 장점</p>
+            <p>그럴줄 몰랐던 단점</p>
+            <p>숨겨져있던 내 업무능력</p>
+          </div>
+          <p className="text-gray-600 mb-8 font-medium">가고싶은 회사가 있으면 커리어챗은 최대한 도와드리겠습니다</p>
+          <button className="bg-black text-white px-10 py-4 rounded-xl font-bold hover:scale-105 transition-transform">
+            지금 진단받기
+          </button>
         </div>
-      </section>
-
-      <footer className='py-7 mx-auto font-mono text-xs text-gray-300 max-w-6xl text-center'>
-        powered by Lee Jeha
-      </footer>
+        <div className="flex-1 bg-gray-100 rounded-3xl aspect-square border border-gray-200 overflow-hidden shadow-inner">
+           {/* 이미지 01의 우측 모형 자리 */}
+           <div className="w-full h-10 bg-white border-b border-gray-200 p-2 flex gap-1">
+             <div className="w-2 h-2 rounded-full bg-red-400"></div>
+             <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
+             <div className="w-2 h-2 rounded-full bg-green-400"></div>
+           </div>
+        </div>
+      </div>
     </div>
   );
 }
